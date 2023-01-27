@@ -16,7 +16,6 @@ module.exports = {
       'entertainment': '#FFCECE',
       'study': '#D1E5F7',
       'family': '#DAF2D6',
-      'checkbox-current': 'current',
     },
   },
   plugins: [require("@tailwindcss/forms")],
