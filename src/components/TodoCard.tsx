@@ -1,14 +1,18 @@
 import React, { useState } from 'react'
 import Dropdown from './Dropdown';
 
+import { useClickOutside } from '../customHooks/useClickOutside'
+
 function TodoCard() {
 
     const [checkDone, setCheckDone] = useState<boolean>(false);
     const [buttonClick, setButtonClick] = useState<boolean>(false)
 
+    let domNode = useClickOutside(() => setButtonClick(false))
+
     return (
         <>
-            <div className='p-4 bg-todo-bg flex flex-col rounded-lg w-1/2'>
+            <div ref={domNode} className='p-4 bg-todo-bg flex flex-col rounded-lg w-1/2'>
                 <div className='flex justify-between mb-4 items-center relative'>
                     <span className={`text-3xl font-bold text-text-color 
                     ${checkDone ? 'line-through' : ''}`}>
@@ -17,7 +21,7 @@ function TodoCard() {
                     <div className='relative'>
                         <button className='text-4xl text-bcolor font-black 
                     tracking-widest absolute right-[0px] top-[-30px]'
-                            onClick={() => setButtonClick(prevstate => !prevstate)}>
+                            onClick={() => setButtonClick(prevState => !prevState)}>
                             ...
                         </button>
                         {buttonClick && <Dropdown />}

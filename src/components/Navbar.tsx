@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, Outlet } from 'react-router-dom'
 
+import AddForms from './AddForms'
+
 function Navbar() {
+
+  const [clickOnAdd, setClickOnAdd] = useState<boolean>(false)
+
   return (
     <>
       <div className='w-auto h-[94vh] border-4 border-bcolor m-6 p-10
@@ -11,13 +16,17 @@ function Navbar() {
         pl-[20px]'>
             todo
           </Link>
-          <button className='text-6xl text-text-color mr-5 font-black'>
+          <button className='text-6xl text-text-color mr-5 font-black'
+            onClick={(() => setClickOnAdd(prevState => !prevState))}>
             +
           </button>
         </div>
 
+        {clickOnAdd && <AddForms />}
+
         <Outlet />
       </div>
+      {console.log(clickOnAdd)}
     </>
   )
 }
