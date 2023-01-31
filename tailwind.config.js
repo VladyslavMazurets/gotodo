@@ -17,6 +17,7 @@ module.exports = {
       'study': '#D1E5F7',
       'family': '#DAF2D6',
       'hover-button': '#f3f4f6',
+      'forms-bg': '#f2f3f5',
     },
   },
   plugins: [require("@tailwindcss/forms")],

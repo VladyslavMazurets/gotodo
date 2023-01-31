@@ -12,9 +12,10 @@ function TodoCard() {
 
     return (
         <>
-            <div ref={domNode} className='p-4 bg-todo-bg flex flex-col rounded-lg w-1/2'>
+            <div ref={domNode} className='p-4 bg-todo-bg flex flex-col rounded-lg 
+            w-1/2'>
                 <div className='flex justify-between mb-4 items-center relative'>
-                    <span className={`text-3xl font-bold text-text-color 
+                    <span className={`text-3xl font-bold text-text-color
                     ${checkDone ? 'line-through' : ''}`}>
                         Title
                     </span>
@@ -45,7 +46,7 @@ function TodoCard() {
                             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                                 setCheckDone(e.target.checked)} />
                         <label htmlFor="todo__card__checkbox" className="text-xl
-                        text-bcolor cursor-pointer select-none relative
+                        text-bcolor cursor-pointer select-none relative z-0
                         before:absolute before:border-2 before:w-5 before:h-5 
                         before:left-[-23px] before:top-[4px] before:content-[''] 
                         before:inline-block before:rounded after:content-['\2714']
