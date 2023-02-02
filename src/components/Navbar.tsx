@@ -9,7 +9,7 @@ function Navbar() {
 
   return (
     <>
-      <div className='w-auto h-full static border-4 border-bcolor m-4 p-10
+      <div className='w-fit h-auto fixed border-4 border-bcolor m-4 p-10
       rounded-[50px] flex flex-col'>
         <div className='flex justify-between items-center'>
           <Link to='/home' className='text-text-color font-bold text-5xl
@@ -21,11 +21,11 @@ function Navbar() {
             +
           </button>
         </div>
-        {clickOnAdd && <AddForms />}
+        {clickOnAdd && <AddForms setClickOnAdd={setClickOnAdd}/>}
 
         <Outlet />
       </div>
-    </>
+    </> 
   )
 }
 

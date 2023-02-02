@@ -1,17 +1,21 @@
-import React from 'react'
+import React, { Dispatch } from 'react'
 
 import { useClickOutside } from '../customHooks/useClickOutside'
 
-function AddForms() {
+function AddForms({ setClickOnAdd }: any) {
+
+    let domNode = useClickOutside(() => setClickOnAdd(false))
+
     return (
         <>
             <div className='w-full h-full bg-bcolor fixed top-0 left-0 z-20
              opacity-50'></div>
 
-            <div className='h-[65%] w-[50%] fixed bg-button-text flex flex-col 
+            <div ref={domNode} className='h-[65%] w-[50%] fixed bg-button-text flex flex-col 
                 justify-between p-12 rounded-[25px] z-30 left-[25%] top-[15%]'>
                 <div className='flex justify-between text-lg font-semibold'>
-                    <button className='text-text-color'>
+                    <button className='text-text-color'
+                        onClick={() => setClickOnAdd(false)}>
                         Cancel
                     </button>
                     <button className='bg-button-bg text-button-text py-3
