@@ -1,9 +1,18 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
+const TODOS_KEY = 'TODOS'
+
 export interface ITodoObj {
     id: string,
     title: string,
-    content: string
+    content: string,
+    done: boolean,
+    tags: {
+        work: boolean,
+        study: boolean,
+        entertainment: boolean,
+        family: boolean
+    }
 }
 
 interface ITodo {
@@ -11,43 +20,7 @@ interface ITodo {
 }
 
 const initialState: ITodo = {
-    data: [
-        {
-            id: '1',
-            title: 'Todo Test 1',
-            content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Non odit quam ea magnam excepturi reprehenderit!'
-        },
-        {
-            id: '2',
-            title: 'Todo Test 2',
-            content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Non odit quam ea magnam excepturi reprehenderit!'
-        },
-        {
-            id: '3',
-            title: 'Todo Test 2',
-            content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Non odit quam ea magnam excepturi reprehenderit!'
-        },
-        {
-            id: '4',
-            title: 'Todo Test 2',
-            content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Non odit quam ea magnam excepturi reprehenderit!'
-        },
-        {
-            id: '5',
-            title: 'Todo Test 2',
-            content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Non odit quam ea magnam excepturi reprehenderit!'
-        },
-        {
-            id: '6',
-            title: 'Todo Test 2',
-            content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Non odit quam ea magnam excepturi reprehenderit!'
-        },
-        {
-            id: '7',
-            title: 'Todo Test 2',
-            content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Non odit quam ea magnam excepturi reprehenderit!'
-        },
-    ]
+    data: JSON.parse(localStorage.getItem(TODOS_KEY) ?? '[]')
 }
 
 export const todosSlice = createSlice({
@@ -56,8 +29,18 @@ export const todosSlice = createSlice({
     reducers: {
         addTodo(state, action: PayloadAction<ITodoObj>) {
             state.data.push(action.payload)
+            localStorage.setItem(TODOS_KEY, JSON.stringify(state.data))
+        },
+        removeTodo(state, action) {
+            state.data = state.data.filter(item => item.id !== action.payload)
+            localStorage.setItem(TODOS_KEY, JSON.stringify(state.data))
+        },
+        hideTodo(state, action) {
+            state.data = state.data.filter(item => item.done === true)
         }
     }
-})
+}
+)
 
 export const todosReducer = todosSlice.reducer
+export const todosAction = todosSlice.actions

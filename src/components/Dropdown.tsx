@@ -1,6 +1,15 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { todosAction } from '../store/todo'
 
-function Dropdown() {
+function Dropdown({id}: any) {
+
+    const dispatch = useDispatch()
+
+    const DeleteTodoItem = () => {
+        dispatch(todosAction.removeTodo(id))
+    }
+
     return (
         <>
             <div className='bg-button-text absolute p-2 left-[-190px] 
@@ -12,7 +21,7 @@ function Dropdown() {
                     </button>
                     <div className='w-full border-b text-bcolor my-1' />
                     <button className='text-lg text-bcolor pr-[105px] ml-3 p-2
-                     transition delay-80 hover:text-text-color'>
+                     transition delay-80 hover:text-text-color' onClick={DeleteTodoItem}>
                         Delete
                     </button>
                 </div>
