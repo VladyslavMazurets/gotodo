@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { hideCheckboxReducer } from "./hideCheckbox";
 import { todosReducer } from "./todo";
 
 export const store = configureStore({
     reducer: {
-        alltodos: todosReducer
+        alltodos: todosReducer,
+        hidecheckbox: hideCheckboxReducer
     }
 })
 

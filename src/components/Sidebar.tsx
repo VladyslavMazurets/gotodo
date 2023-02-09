@@ -1,7 +1,9 @@
 import React from 'react'
-import { Link, NavLink, Outlet } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { NavLink, Outlet } from 'react-router-dom'
 
 import Mom from '../assets/images/mom.jpg'
+import { hideCheckboxAction } from '../store/hideCheckbox'
 
 const activeStyle = {
     backgroundColor: '#f2f3f5',
@@ -10,6 +12,14 @@ const activeStyle = {
 }
 
 function Sidebar() {
+
+    const hideState = useSelector((state: any) => state.hidecheckbox.hide)
+    const dispatch = useDispatch()
+
+    const hideTasks = () => {
+        dispatch(hideCheckboxAction.hideDone(!hideState))
+    }
+
     return (
         <>
             <div className='flex mt-10'>
@@ -50,15 +60,15 @@ function Sidebar() {
                     </div>
                     <div className='mt-[80px] pl-[20px]'>
                         <input type='checkbox' id='sidebar_checkbox'
-                            className='sr-only peer' />
-                        <label htmlFor='sidebar_checkbox' className="text-bcolor
+                            className='sr-only peer' onClick={hideTasks} />
+                        <label htmlFor='sidebar_checkbox' className={`text-bcolor
                         text-xl cursor-pointer select-none relative ml-5
                         before:absolute before:border-2 before:inline-block 
                         before:w-5 before:h-5 before:content-[''] before:rounded 
                         before:left-[-25px] before:top-[5px] after:absolute
-                        after:content-['\2714'] after:inline-block after:left-[-23px]
-                        after:hidden after:top-[0px] peer-checked:after:block
-                        peer-checked:text-text-color">
+                        ${hideState ?
+                            'after:content-["✔️"] before:text-text-color after:absolute after:left-[-28px] after:top-[-2px] after:block text-text-color'
+                            : ''}`}>
                             Hide Done Tasks
                         </label>
                     </div>
