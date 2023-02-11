@@ -20,7 +20,7 @@ function TodoCard({ todo }: any) {
     return (
         <>
             <div ref={domNode} className={`p-4 bg-todo-bg flex flex-col rounded-lg 
-            w-[47%] h-max ml-6 mb-6 ${todo.done ? 'opacity-70' : ''}`}>
+            w-[47%] h-fit ml-6 mb-6 ${todo.done ? 'opacity-70' : ''}`}>
                 <div className='flex justify-between mb-4 items-center relative'>
                     <span className={`text-3xl font-bold text-text-color
                     ${todo.done ? 'line-through' : ''}`}>

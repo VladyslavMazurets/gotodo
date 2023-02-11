@@ -9,7 +9,7 @@ function Home() {
   const hideTasks = useSelector((state: any) => state.hidecheckbox.hide)
   const allTodos = useSelector((state: any) => state.alltodos.data)
 
-  const notDoneTodo = allTodos.filter((item: ITodoObj) => item.done !== true)
+  const doneTodo = allTodos.filter((item: ITodoObj) => item.done !== true)
 
 
   if (allTodos.length == 0) return (
@@ -21,12 +21,13 @@ function Home() {
 
   return (
     <>
-      <div className='flex flex-wrap overflow-y-scroll max-h-[680px] w-full'>
+      <div className='content-start flex flex-wrap overflow-y-scroll 
+      max-h-[680px] w-full'>
         {!hideTasks ? allTodos.map((todo: ITodoObj) => {
           return < TodoCard key={todo.id} todo={todo} />
         })
           :
-          notDoneTodo.map((todo: ITodoObj) => {
+          doneTodo.map((todo: ITodoObj) => {
             return < TodoCard key={todo.id} todo={todo} />
           })
         }

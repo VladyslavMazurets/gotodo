@@ -6,7 +6,7 @@ export interface ITodoObj {
     id: string,
     title: string,
     content: string,
-    done: boolean,
+    done?: boolean,
     tags: {
         work: boolean,
         study: boolean,
@@ -38,6 +38,11 @@ export const todosSlice = createSlice({
         doneTodo(state, action: PayloadAction<string>) {
             const index = state.data.findIndex(item => item.id === action.payload)
             state.data[index].done = !state.data[index].done
+            localStorage.setItem(TODOS_KEY, JSON.stringify(state.data))
+        },
+        editTodo(state, action: PayloadAction<ITodoObj>) {
+            const index = state.data.findIndex(item => item.id === action.payload.id)
+            state.data[index] = action.payload
             localStorage.setItem(TODOS_KEY, JSON.stringify(state.data))
         }
     }

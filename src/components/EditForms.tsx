@@ -1,40 +1,41 @@
 import React, { useState } from 'react'
-import { nanoid } from '@reduxjs/toolkit';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { useClickOutside } from '../customHooks/useClickOutside'
 import { todosAction } from '../store/todo';
+import { RootType } from '../store/store';
 
-function AddForms({ setClickOnAdd }: any) {
+interface IEditTodo {
+    setClickedOnEdit: (e: boolean) => void,
+    id: string
+}
 
-    let domNode = useClickOutside(() => setClickOnAdd(false))
+function EditForms({ setClickedOnEdit, id }: IEditTodo) {
+
+    let domNode = useClickOutside(() => setClickedOnEdit(false))
+
     const dispatch = useDispatch();
+    const editTodo = useSelector((state: RootType) =>
+        state.alltodos.data.find(todo => todo.id === id))
 
-    const [title, setTitle] = useState('')
-    const [content, setContent] = useState('')
+    const [title, setTitle] = useState<string>(editTodo?.title!)
+    const [content, setContent] = useState<string>(editTodo?.content!)
 
-    const [work, setWork] = useState<boolean>(false)
-    const [study, setStudy] = useState<boolean>(false)
-    const [entertainment, setEntertainment] = useState<boolean>(false)
-    const [family, setFamily] = useState<boolean>(false)
+    const [work, setWork] = useState<boolean>(editTodo?.tags.work!)
+    const [study, setStudy] = useState<boolean>(editTodo?.tags.study!)
+    const [entertainment, setEntertainment] = useState<boolean>(editTodo?.tags.entertainment!)
+    const [family, setFamily] = useState<boolean>(editTodo?.tags.family!)
 
-    const AddNewTodoItem = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
+    const EditTodo = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
 
-        if (title && content) {
-            dispatch(todosAction.addTodo({
-                id: nanoid(), title, content, done: false, tags: {
-                    work, study, entertainment, family
-                }
-            }))
-            setTitle('')
-            setContent('')
-            setWork(false)
-            setStudy(false)
-            setEntertainment(false)
-            setFamily(false)
-            setClickOnAdd(false)
-        }
+        dispatch(todosAction.editTodo({
+            id, title, content, tags: {
+                work, study,
+                entertainment, family
+            }
+        }))
+        setClickedOnEdit(false)
     }
 
     return (
@@ -44,22 +45,22 @@ function AddForms({ setClickOnAdd }: any) {
 
             <div ref={domNode} className='h-[65%] w-[50%] fixed bg-button-text flex flex-col 
                 justify-between p-12 rounded-[25px] z-30 left-[25%] top-[15%]'>
-                <form onSubmit={AddNewTodoItem}>
+                <form onSubmit={EditTodo}>
                     <div className='flex justify-between text-lg font-semibold'>
                         <button className='text-text-color'
-                            onClick={() => setClickOnAdd(false)}>
+                            onClick={() => setClickedOnEdit(false)}>
                             Cancel
                         </button>
                         <button className='bg-button-bg text-button-text py-3
                         px-16 rounded-[15px]' type='submit'>
-                            Add
+                            Edit
                         </button>
                     </div>
                     <div className='flex flex-col text-text-color my-6'>
                         <div className='flex flex-col mb-6'>
                             <label htmlFor="title" className='text-2xl mb-3
                             font-bold'>
-                                Title
+                                Edit Title
                             </label>
                             <input id="title" placeholder='add a title ...'
                                 type='text' required
@@ -70,7 +71,7 @@ function AddForms({ setClickOnAdd }: any) {
                         <div className='flex flex-col'>
                             <label htmlFor='description' className='text-2xl
                                 mb-3 font-bold'>
-                                Description
+                                Edit Description
                             </label>
                             <textarea id="description" cols={5} rows={5}
                                 placeholder='add a description ...' required
@@ -82,7 +83,7 @@ function AddForms({ setClickOnAdd }: any) {
                     </div>
                 </form>
                 <span className='text-2xl mb-2 text-text-color font-bold'>
-                    Tags
+                    Edit Tags
                 </span>
                 <div className='flex text-text-color'>
                     <button className={`flex items-center text-xl mr-2 py-3 
@@ -123,4 +124,4 @@ function AddForms({ setClickOnAdd }: any) {
     )
 }
 
-export default AddForms
+export default EditForms
