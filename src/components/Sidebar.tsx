@@ -22,12 +22,13 @@ function Sidebar() {
 
     return (
         <>
-            <div className='flex mt-10'>
-                <div className='mr-16'>
-                    <div className='flex flex-col mb-8 items-start'>
+            <div className='flex flex-col mt-3 sm:mt-10 sm:flex-row'>
+                <div className='mx-4 xl:mr-16'>
+                    <div className='flex content-center overflow-x-scroll 
+                    sm:flex-col sm:mb-8 sm:overflow-hidden'>
                         <NavLink to='work' style={({ isActive }) =>
                             isActive ? activeStyle : undefined}
-                            className='flex p-[20px]  w-full items-center text-xl 
+                            className='flex p-[20px] w-full items-center text-xl 
                             text-text-color font-semibold'>
                             <div className='w-6 h-6 bg-work rounded-full
                             border-3 p-4 mr-3' />
@@ -58,7 +59,7 @@ function Sidebar() {
                             family
                         </NavLink>
                     </div>
-                    <div className='mt-[80px] pl-[20px]'>
+                    <div className='mt-[80px] pl-[20px] hidden sm:block'>
                         <input type='checkbox' id='sidebar_checkbox'
                             className='sr-only peer' onClick={hideTasks} />
                         <label htmlFor='sidebar_checkbox' className={`text-bcolor
@@ -73,7 +74,7 @@ function Sidebar() {
                         </label>
                     </div>
                     <img src={Mom} alt='Mom_Img' width='200px'
-                        className='mt-[100px] ml-3' />
+                        className='mt-[100px] ml-3 hidden sm:block' />
                 </div>
 
                 <Outlet />

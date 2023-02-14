@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, Outlet } from 'react-router-dom'
 
 import AddForms from './AddForms'
@@ -9,23 +9,25 @@ function Navbar() {
 
   return (
     <>
-      <div className='w-[98%] h-auto fixed border-4 border-bcolor m-4 p-10
-      rounded-[50px] flex flex-col'>
+      <div className='h-auto m-2
+      rounded-[50px] flex flex-col xl:fixed xl:border-4 xl:border-bcolor 
+      xl:w-[98%] xl:p-10 xl:m-4'>
         <div className='flex justify-between items-center'>
-          <Link to='/home' className='text-text-color font-bold text-5xl
-        pl-[20px]'>
+          <Link to='/home' className='text-text-color font-semibold text-4xl
+          ml-4 xl:text-5xl xl:pl-[20px] xl:font-bold'>
             todo
           </Link>
-          <button className='text-6xl text-text-color mr-5 font-black'
+          <button className='text-4xl mr-4 text-text-color font-black 
+          xl:text-6xl xl:mr-5'
             onClick={(() => setClickOnAdd(prevState => !prevState))}>
             +
           </button>
         </div>
-        {clickOnAdd && <AddForms setClickOnAdd={setClickOnAdd}/>}
+        {clickOnAdd && <AddForms setClickOnAdd={setClickOnAdd} />}
 
         <Outlet />
       </div>
-    </> 
+    </>
   )
 }
 

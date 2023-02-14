@@ -21,9 +21,14 @@ function AddForms({ setClickOnAdd }: any) {
     const AddNewTodoItem = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
+        let today = new Date();
+        let date = `${today.getDate()} - ${today.getUTCMonth() < 10 ?
+            `0${today.getUTCMonth() + 1}` : today.getUTCMonth() + 1} - 
+        ${today.getFullYear()}`
+
         if (title && content) {
             dispatch(todosAction.addTodo({
-                id: nanoid(), title, content, done: false, tags: {
+                id: nanoid(), title, content, completed: false, date, tags: {
                     work, study, entertainment, family
                 }
             }))
@@ -40,10 +45,12 @@ function AddForms({ setClickOnAdd }: any) {
     return (
         <>
             <div className='w-full h-full bg-bcolor fixed top-0 left-0 z-20
-             opacity-50'></div>
+             opacity-50 hidden sm:block'></div>
 
-            <div ref={domNode} className='h-[65%] w-[50%] fixed bg-button-text flex flex-col 
-                justify-between p-12 rounded-[25px] z-30 left-[25%] top-[15%]'>
+            <div ref={domNode} className='fixed bg-button-text flex flex-col 
+                justify-between z-30 sm:h-[65%] 
+                sm:w-[50%] sm:left-[25%] sm:top-[15%] sm:rounded-[25px] 
+                sm:p-12'>
                 <form onSubmit={AddNewTodoItem}>
                     <div className='flex justify-between text-lg font-semibold'>
                         <button className='text-text-color'

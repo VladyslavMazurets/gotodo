@@ -20,15 +20,17 @@ function TodoCard({ todo }: any) {
     return (
         <>
             <div ref={domNode} className={`p-4 bg-todo-bg flex flex-col rounded-lg 
-            w-[47%] h-fit ml-6 mb-6 ${todo.done ? 'opacity-70' : ''}`}>
+             h-fit w-full ${todo.completed ? 'opacity-70' : ''} m-3 sm:w-[47%] sm:ml-6 
+             sm:mb-6`}>
                 <div className='flex justify-between mb-4 items-center relative'>
-                    <span className={`text-3xl font-bold text-text-color
-                    ${todo.done ? 'line-through' : ''}`}>
+                    <span className={`text-xl font-bold text-text-color
+                   w-[95%] ${todo.completed ? 'line-through' : ''} sm:text-3xl`}>
                         {todo.title}
                     </span>
                     <div className='relative'>
-                        <button className='text-4xl text-bcolor font-black 
-                    tracking-widest absolute right-[0px] top-[-30px]'
+                        <button className='text-2xl text-bcolor font-black 
+                    tracking-widest absolute right-[0px] top-[-25px] sm:top-[-30px]
+                     sm:text-4xl'
                             onClick={() => setButtonClick(prevState => !prevState)}>
                             ...
                         </button>
@@ -36,15 +38,19 @@ function TodoCard({ todo }: any) {
                     </div>
                 </div>
                 <span className={`text-lg font-semibold text-text-color mb-6
-                ${todo.done ? 'line-through' : ''}`}>
+                ${todo.completed ? 'line-through' : ''} sm:text-xl`}>
                     {todo.content}
                 </span>
                 <div className='flex justify-between items-center'>
                     <div className='flex'>
-                        {todo.tags.work && <div className='w-8 h-8 mr-2 rounded-full bg-work' />}
-                        {todo.tags.study && <div className='w-8 h-8 mr-2 rounded-full bg-study' />}
-                        {todo.tags.entertainment && <div className='w-8 h-8 mr-2 rounded-full bg-entertainment' />}
-                        {todo.tags.family && <div className='w-8 h-8 mr-2 rounded-full bg-family' />}
+                        {todo.tags?.work && <div className='h-6 w-6 mr-2 rounded-full bg-work sm:w-8 sm:h-8' />}
+                        {todo.tags?.study && <div className='h-6 w-6 mr-2 rounded-full bg-study sm:w-8 sm:h-8' />}
+                        {todo.tags?.entertainment && <div className='h-6 w-6 mr-2 rounded-full bg-entertainment sm:w-8 sm:h-8' />}
+                        {todo.tags?.family && <div className='h-6 w-6 mr-2 rounded-full bg-family sm:w-8 sm:h-8' />}
+                    </div>
+                    <div className='text-[16px] font-semibold text-text-color
+                    hidden sm:block'>
+                        {todo.date && `Added Date: ${todo.date}`}
                     </div>
                     <div>
                         <input type='checkbox' id={todo.id}
@@ -55,7 +61,7 @@ function TodoCard({ todo }: any) {
                         before:absolute before:border-2 before:w-5 before:h-5 
                         before:left-[-23px] before:top-[4px] before:content-[''] 
                         before:inline-block before:rounded 
-                        ${todo.done ?
+                        ${todo.completed ?
                                 'after:content-["✔️"] before:text-text-color after:absolute after:left-[-25px] after:top-[-2px] after:block text-text-color'
                                 : ''}`}>
                             Done

@@ -29,8 +29,13 @@ function EditForms({ setClickedOnEdit, id }: IEditTodo) {
     const EditTodo = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
+        let today = new Date();
+        let date = `${today.getDate()} - ${today.getUTCMonth() < 10 ?
+            `0${today.getUTCMonth() + 1}` : today.getUTCMonth() + 1} - 
+        ${today.getFullYear()}`
+
         dispatch(todosAction.editTodo({
-            id, title, content, tags: {
+            id, title, content, date, tags: {
                 work, study,
                 entertainment, family
             }
