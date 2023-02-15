@@ -7,7 +7,7 @@ import { hideCheckboxAction } from '../store/hideCheckbox'
 
 const activeStyle = {
     backgroundColor: '#f2f3f5',
-    padding: '20px',
+    padding: '15px 20px 15px 20px',
     borderRadius: '20px'
 }
 
@@ -22,59 +22,68 @@ function Sidebar() {
 
     return (
         <>
-            <div className='flex flex-col mt-3 sm:mt-10 sm:flex-row'>
-                <div className='mx-4 xl:mr-16'>
+            <div className='flex flex-col mt-3 sm:flex-row sm:mt-8 xl:mt-10'>
+                <div className='flex items-center mx-4 sm:mx-2 sm:flex-col 
+                xl:mr-16'>
                     <div className='flex content-center overflow-x-scroll 
                     sm:flex-col sm:mb-8 sm:overflow-hidden'>
                         <NavLink to='work' style={({ isActive }) =>
                             isActive ? activeStyle : undefined}
-                            className='flex p-[20px] w-full items-center text-xl 
-                            text-text-color font-semibold'>
-                            <div className='w-6 h-6 bg-work rounded-full
-                            border-3 p-4 mr-3' />
+                            className='flex p-[15px] w-full items-center text-xl 
+                            text-text-color font-semibold mb-3 '>
+                            <div className='bg-work rounded-full
+                            border-3 p-3 mr-3 sm:p-4' />
                             work
                         </NavLink>
                         <NavLink to='/study' style={({ isActive }) =>
                             isActive ? activeStyle : undefined}
-                            className='flex p-[20px]  w-full items-center text-xl 
-                            text-text-color font-semibold'>
-                            <div className='w-6 h-6 bg-study rounded-full
-                            border-3 p-4 mr-3' />
+                            className='flex p-[15px] w-full items-center text-xl 
+                            text-text-color font-semibold mb-3 '>
+                            <div className='bg-study rounded-full
+                            border-3 p-3 mr-3 sm:p-4' />
                             study
                         </NavLink>
                         <NavLink to='/entertainment' style={({ isActive }) =>
                             isActive ? activeStyle : undefined}
-                            className='flex p-[20px]  w-full items-center text-xl 
-                            text-text-color font-semibold'>
-                            <div className='w-6 h-6 bg-entertainment rounded-full
-                            border-3 p-4 mr-3' />
+                            className='flex p-[15px] w-full items-center text-xl 
+                            text-text-color font-semibold mb-3 '>
+                            <div className='bg-entertainment rounded-full
+                            border-3 p-3 mr-3 sm:p-4' />
                             entertainment
                         </NavLink>
                         <NavLink to='/family' style={({ isActive }) =>
                             isActive ? activeStyle : undefined}
-                            className='flex p-[20px]  w-full items-center text-xl 
-                            text-text-color font-semibold'>
-                            <div className='w-6 h-6 bg-family rounded-full
-                            border-3 p-4 mr-3' />
+                            className='flex p-[15px] w-full items-center text-xl 
+                            text-text-color font-semibold mb-3 '>
+                            <div className='bg-family rounded-full
+                            border-3 p-3 mr-3 sm:p-4' />
                             family
                         </NavLink>
                     </div>
-                    <div className='mt-[80px] pl-[20px] hidden sm:block'>
-                        <input type='checkbox' id='sidebar_checkbox'
-                            className='sr-only peer' onClick={hideTasks} />
-                        <label htmlFor='sidebar_checkbox' className={`text-bcolor
+                    <div className='flex flex-col hidden sm:block text-center mt-[-65px]'>
+                        <div className='mt-[80px]'>
+                            <input type='checkbox' id='sidebar_checkbox'
+                                className='sr-only peer' onClick={hideTasks} />
+                            <label htmlFor='sidebar_checkbox' className={`text-bcolor
                         text-xl cursor-pointer select-none relative ml-5
                         before:absolute before:border-2 before:inline-block 
                         before:w-5 before:h-5 before:content-[''] before:rounded 
                         before:left-[-25px] before:top-[5px] after:absolute
                         ${hideState ?
-                            'after:content-["✔️"] before:text-text-color after:absolute after:left-[-28px] after:top-[-2px] after:block text-text-color'
-                            : ''}`}>
-                            Hide Done Tasks
-                        </label>
+                                    'after:content-["✔️"] before:text-text-color after:absolute after:left-[-28px] after:top-[-2px] after:block text-text-color'
+                                    : ''}`}>
+                                Hide Done Tasks
+                            </label>
+                        </div>
+                        <NavLink to='completed' style={({ isActive }) =>
+                            isActive ? activeStyle : undefined} className='flex w-full 
+                        text-xl text-text-color font-semibold p-[15px] mt-4'>
+                            Completed Tasks
+                        </NavLink>
                     </div>
-                    <img src={Mom} alt='Mom_Img' width='200px'
-                        className='mt-[100px] ml-3 hidden sm:block' />
+                    <img src={Mom} alt='Mom_Img'
+                        className='mt-[100px] ml-3 hidden mt-[83px] sm:block 
+                        sm:w-[160px] xl:w-[175px]' />
                 </div>
 
                 <Outlet />

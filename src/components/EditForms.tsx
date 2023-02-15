@@ -46,80 +46,92 @@ function EditForms({ setClickedOnEdit, id }: IEditTodo) {
     return (
         <>
             <div className='w-full h-full bg-bcolor fixed top-0 left-0 z-20
-             opacity-50'></div>
+             opacity-50 hidden sm:block'></div>
 
-            <div ref={domNode} className='h-[65%] w-[50%] fixed bg-button-text flex flex-col 
-                justify-between p-12 rounded-[25px] z-30 left-[25%] top-[15%]'>
+            <div ref={domNode} className='fixed w-full bg-button-text flex 
+            flex-col justify-between z-30 p-4 top-0 left-0 h-fit sm:w-[89%] 
+            sm:left-[6%] sm:top-[10%] sm:rounded-[25px] sm:p-8 xl:w-[50%] 
+            xl:left-[25%] xl:top-[15%] xl:p-12'>
                 <form onSubmit={EditTodo}>
-                    <div className='flex justify-between text-lg font-semibold'>
-                        <button className='text-text-color'
+                    <div className='flex justify-between text-md 
+                    font-semibold sm:text-lg'>
+                        <button type='button' className='text-text-color'
                             onClick={() => setClickedOnEdit(false)}>
                             Cancel
                         </button>
-                        <button className='bg-button-bg text-button-text py-3
-                        px-16 rounded-[15px]' type='submit'>
+                        <button className='bg-button-bg text-button-text px-6 
+                       py-1 rounded-[10px] sm:py-3 sm:px-16 sm:rounded-[15px]'
+                            type='submit'>
                             Edit
                         </button>
                     </div>
-                    <div className='flex flex-col text-text-color my-6'>
+                    <div className='flex flex-col text-text-color my-3
+                     sm:my-6'>
                         <div className='flex flex-col mb-6'>
-                            <label htmlFor="title" className='text-2xl mb-3
-                            font-bold'>
+                            <label htmlFor="title" className='text-xl mb-1
+                            font-bold sm:text-2xl sm:mb-3'>
                                 Edit Title
                             </label>
                             <input id="title" placeholder='add a title ...'
                                 type='text' required
-                                className='bg-forms-bg rounded-[8px] p-3 
-                                text-lg border-0' value={title}
+                                className='bg-forms-bg rounded-[8px] 
+                                 border-0 sm:p-3 sm:text-lg' value={title}
                                 onChange={e => setTitle(e.target.value)} />
                         </div>
                         <div className='flex flex-col'>
-                            <label htmlFor='description' className='text-2xl
-                                mb-3 font-bold'>
+                            <label htmlFor='description' className='text-xl
+                                font-bold mb-1 sm:text-2xl sm:mb-3'>
                                 Edit Description
                             </label>
                             <textarea id="description" cols={5} rows={5}
                                 placeholder='add a description ...' required
                                 className='bg-forms-bg rounded-[8px] resize-none
-                                text-lg border-0 p-3' value={content}
+                                text-md border-0 sm:p-3 sm:text-lg' value={content}
                                 onChange={e => setContent(e.target.value)}
                             />
                         </div>
                     </div>
                 </form>
-                <span className='text-2xl mb-2 text-text-color font-bold'>
+                <span className='text-xl mb-2 text-text-color font-bold 
+                sm:text-2xl'>
                     Edit Tags
                 </span>
-                <div className='flex text-text-color'>
-                    <button className={`flex items-center text-xl mr-2 py-3 
-                        px-6 hover:bg-hover-button rounded-2xl font-semibold
-                        ${work ? 'bg-hover-button' : ''}`}
+                <div className='flex flex-col text-text-color sm:flex-row'>
+                    <button className={`flex items-center 
+                     hover:bg-hover-button rounded-2xl font-semibold
+                        ${work ? 'bg-hover-button' : ''} px-3 py-2 mb-1 
+                        text-lg sm:text-xl sm:mr-2 sm:py-3 sm:px-6`}
                         onClick={() => setWork(prevState => !prevState)}>
-                        <div className='bg-work rounded-full p-4 mr-1' />
+                        <div className='bg-work rounded-full p-3  mr-1 
+                        sm:p-4'/>
                         work
                     </button>
-                    <button className={`flex items-center text-xl mr-2 py-3 
-                        px-6 hover:bg-hover-button rounded-2xl font-semibold
-                        ${study ? 'bg-hover-button' : ''}`}
+                    <button className={`flex items-center 
+                     hover:bg-hover-button rounded-2xl font-semibold
+                        ${study ? 'bg-hover-button' : ''} px-3 py-2 mb-1 
+                        text-lg sm:text-xl sm:mr-2 sm:py-3 sm:px-6`}
                         onClick={() => setStudy(prevState => !prevState)}>
-                        <div className='bg-study rounded-full p-4 mr-1'
+                        <div className='bg-study rounded-full p-3  mr-1 
+                        sm:p-4'
                         />
                         study
                     </button>
-                    <button className={`flex items-center text-xl mr-2 py-3 
-                        px-6 hover:bg-hover-button rounded-2xl font-semibold
-                        ${entertainment ? 'bg-hover-button' : ''}`}
+                    <button className={`flex items-center 
+                     hover:bg-hover-button rounded-2xl font-semibold
+                        ${entertainment ? 'bg-hover-button' : ''} px-3 py-2 
+                        mb-1 text-lg sm:text-xl sm:mr-2 sm:py-3 sm:px-6`}
                         onClick={() => setEntertainment(prevState => !prevState)}>
-                        <div className='bg-entertainment rounded-full p-4 
-                            mr-1'
+                        <div className='bg-entertainment rounded-full p-3 
+                        mr-1 sm:p-4'
                         />
                         entertainment
                     </button>
-                    <button className={`flex items-center text-xl mr-2 py-3 
-                        px-6 hover:bg-hover-button rounded-2xl font-semibold
-                        ${family ? 'bg-hover-button' : ''}`}
+                    <button className={`flex items-center 
+                     hover:bg-hover-button rounded-2xl font-semibold
+                        ${family ? 'bg-hover-button' : ''} px-3 py-2 mb-1 
+                        text-lg sm:text-xl sm:mr-2 sm:py-3 sm:px-6`}
                         onClick={() => setFamily(prevState => !prevState)}>
-                        <div className='bg-family rounded-full p-4 mr-1'
+                        <div className='bg-family rounded-full p-3  mr-1 sm:p-4'
                         />
                         family
                     </button>

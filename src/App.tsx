@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
+import Completed from './pages/Completed';
 import Entertainment from './pages/Entertainment';
 import Family from './pages/Family';
 import Home from './pages/Home';
@@ -11,7 +12,7 @@ import Study from './pages/Study';
 import Work from './pages/Work';
 
 function App() {
-  
+
 
   return (
     <>
@@ -24,6 +25,7 @@ function App() {
             <Route path='/study' element={<Study />} />
             <Route path='/entertainment' element={<Entertainment />} />
             <Route path='/family' element={<Family />} />
+            <Route path='/completed' element={<Completed />} />
           </Route>
         </Route>
       </Routes>

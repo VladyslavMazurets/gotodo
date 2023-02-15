@@ -19,10 +19,11 @@ function TodoCard({ todo }: any) {
 
     return (
         <>
-            <div ref={domNode} className={`p-4 bg-todo-bg flex flex-col rounded-lg 
-             h-fit w-full ${todo.completed ? 'opacity-70' : ''} m-3 sm:w-[47%] sm:ml-6 
-             sm:mb-6`}>
-                <div className='flex justify-between mb-4 items-center relative'>
+            <div ref={domNode} className={`p-4 bg-todo-bg flex flex-col 
+            rounded-lg h-fit w-full ${todo.completed ? 'opacity-70' : ''}
+             m-3 2xl:w-[47%] sm:ml-6 sm:mb-6`}>
+                <div className='flex justify-between mb-4 items-center 
+                relative'>
                     <span className={`text-xl font-bold text-text-color
                    w-[95%] ${todo.completed ? 'line-through' : ''} sm:text-3xl`}>
                         {todo.title}
@@ -56,7 +57,7 @@ function TodoCard({ todo }: any) {
                         <input type='checkbox' id={todo.id}
                             className='sr-only'
                             onClick={DoneTask} />
-                        <label htmlFor={todo.id} className={`text-xl
+                        <label htmlFor={todo.id} className={`text-lg sm:text-xl
                         text-bcolor cursor-pointer select-none relative z-0
                         before:absolute before:border-2 before:w-5 before:h-5 
                         before:left-[-23px] before:top-[4px] before:content-[''] 

@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import NoTodos from '../components/NoTodos'
 
 import TodoCard from '../components/TodoCard'
 import { RootType } from '../store/store'
@@ -14,6 +15,8 @@ function Entertainment() {
 
   const doneEntertainment = entertainmentTodos.filter(todo =>
     todo.completed !== true)
+
+  if (entertainmentTodos.length == 0) return (<NoTodos />)
 
   return (
     <>

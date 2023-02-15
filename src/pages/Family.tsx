@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import NoTodos from '../components/NoTodos'
 
 import TodoCard from '../components/TodoCard'
 import { RootType } from '../store/store'
@@ -12,6 +13,8 @@ function Family() {
   const hideTasks = useSelector((state: RootType) => state.hidecheckbox.hide)
 
   const doneFamily = familyTodo.filter(todo => todo.completed !== true)
+
+  if (familyTodo.length == 0) return (<NoTodos />)
 
   return (
     <>

@@ -36,6 +36,10 @@ export const todosSlice = createSlice({
             state.data = state.data.filter(item => item.id !== action.payload)
             localStorage.setItem(TODOS_KEY, JSON.stringify(state.data))
         },
+        removeAllTodo(state, action: PayloadAction) {
+            state.data = [] 
+            localStorage.setItem(TODOS_KEY, JSON.stringify(state.data))
+        },
         doneTodo(state, action: PayloadAction<string>) {
             const index = state.data.findIndex(item => item.id === action.payload)
             state.data[index].completed = !state.data[index].completed

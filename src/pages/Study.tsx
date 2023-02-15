@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import NoTodos from '../components/NoTodos'
 
 import TodoCard from '../components/TodoCard'
 import { RootType } from '../store/store'
@@ -12,6 +13,8 @@ function Study() {
   const hideStudy = useSelector((state: RootType) => state.hidecheckbox.hide)
 
   const doneStudy = studyTodo.filter(todo => todo.completed !== true)
+
+  if (studyTodo.length == 0) return (<NoTodos />)
 
   return (
     <>
