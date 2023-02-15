@@ -10,8 +10,8 @@ function Completed() {
 
     return (
         <>
-            <div className='content-start flex flex-wrap overflow-y-scroll 
-            scrollbar max-h-[680px] w-full'>
+            <div className='content-start flex flex-wrap overflow-y-scroll scrollbar
+      max-h-[680px] w-full'>
                 {completedTasks.map(todo => <TodoCard key={todo.id} todo={todo} />)}
             </div>
         </>

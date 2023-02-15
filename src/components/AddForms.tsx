@@ -48,7 +48,7 @@ function AddForms({ setClickOnAdd }: any) {
              opacity-50 hidden sm:block'></div>
 
             <div ref={domNode} className='fixed w-full bg-button-text flex 
-            flex-col justify-between z-30 p-4  sm:w-[89%] h-fit
+            flex-col justify-between z-30 p-4 sm:w-[89%] h-fit
             sm:left-[6%] sm:top-[10%] sm:rounded-[25px] sm:p-8  
             xl:w-[50%] xl:left-[25%] xl:top-[15%] xl:p-12'>
                 <form onSubmit={AddNewTodoItem}>

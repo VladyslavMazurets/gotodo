@@ -18,8 +18,8 @@ function Dropdown({ id }: any) {
             top-[15px] rounded-xl z-20'>
                 <div className='flex flex-col items-start '>
                     <button className='text-lg text-bcolor pr-[105px] ml-3 p-2
-                    transition delay-80 hover:text-text-color' 
-                    onClick={() => setClickedOnEdit(prev => !prev)}>
+                    transition delay-80 hover:text-text-color'
+                        onClick={() => setClickedOnEdit(prev => !prev)}>
                         Edit ...
                     </button>
                     <div className='w-full border-b text-bcolor my-1' />
@@ -28,8 +28,8 @@ function Dropdown({ id }: any) {
                         Delete
                     </button>
                 </div>
+                {clickedOnEdit && <EditForms setClickedOnEdit={setClickedOnEdit} id={id} />}
             </div>
-            {clickedOnEdit && <EditForms setClickedOnEdit={setClickedOnEdit} id={id}/>}
         </>
     )
 }

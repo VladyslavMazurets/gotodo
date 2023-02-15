@@ -19,9 +19,8 @@ function TodoCard({ todo }: any) {
 
     return (
         <>
-            <div ref={domNode} className={`p-4 bg-todo-bg flex flex-col 
-            rounded-lg h-fit w-full ${todo.completed ? 'opacity-70' : ''}
-             m-3 2xl:w-[47%] sm:ml-6 sm:mb-6`}>
+            <div ref={domNode} className={`p-4 bg-todo-bg flex flex-col
+            rounded-lg h-fit w-full m-3 2xl:w-[47%] sm:ml-6 sm:mb-6`}>
                 <div className='flex justify-between mb-4 items-center 
                 relative'>
                     <span className={`text-xl font-bold text-text-color
