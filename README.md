@@ -1,4 +1,4 @@
-Live site: https://gotodo.vercel.app/
+### Live site: https://gotodo.vercel.app/
 
 The main goal of this project was to improve one's own skills in using the Redux Toolkit, for this purpose this Todo List was created.
 
