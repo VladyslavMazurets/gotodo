@@ -1,4 +1,4 @@
-### Live site: https://gotodo.vercel.app/
+# Live site: https://gotodo.vercel.app/
 
 The main goal of this project was to improve one's own skills in using the Redux Toolkit, for this purpose this Todo List was created.
 
@@ -8,7 +8,7 @@ To create new tasks, the + button is used, where the user can choose to which ca
 
 All tasks are stored in localStorage so that when the user returns to the program, he does not lose his tasks.
 
-In this project, i used:
+## In this project, i used:
 - ReactJS and TypeScript
 - Tailwindcss, React Router, React Icons, Redux Toolkit.
 
